@@ -3,14 +3,85 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Facelet Index</title>
     </h:head>
     <h:body>
-        <p:panelGrid>
-            <c:forEach items="backingBean.list"
-        </p:panelGrid>
+        <ui:composition template="./WEB-INF/template/template.xhtml">
+            <ui:define name="content">
+                <h:form  >
+                    <h:panelGrid  columns="3">
+                        <h:panelGroup />
+ <!--                   <p:dataScroller value="#{controller.getModel().songs}" var="car" chunkSize="10">
+                        <f:facet name="header">
+                            Scroll Down to Load More Cars
+                        </f:facet>
+
+                        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+                            <p:graphicImage name="demo/images/car/#{car.brand}-big.gif" />
+
+                            <p:outputPanel>
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <h:outputText value="Id:" />
+                                    <h:outputText value="#{car.id}" style="font-weight: bold"/>
+
+                                    <h:outputText value="Year:" />
+                                    <h:outputText value="#{car.year}" style="font-weight: bold"/>
+
+                                    <h:outputText value="Color:" />
+                                    <h:outputText value="#{car.color}" style="font-weight: bold"/>
+                                </h:panelGrid>
+                            </p:outputPanel>
+                        </h:panelGrid>
+                    </p:dataScroller>-->
+                        <!--DataList version-->
+                       
+                        <p:dataTable value="#{controller.getModel().songs}" var="song">
+                            <p:column >
+                                <h:graphicImage class="image" value="band.jpeg"/>
+                            </p:column>
+                            <p:column headerText="Song Title">
+                                <h:outputText value="Song: #{song.title}" />
+                            </p:column>
+
+                            <p:column headerText= "Artist">
+                                <h:outputText  value="Year: #{song.artist}"/>
+                            </p:column>
+
+                            <p:column >
+                               <h:graphicImage class="image" value="x.png"/>
+                            </p:column>
+
+                            <p:column >
+                               <h:graphicImage class="image" value="heart.png"/>
+                            </p:column>
+                        </p:dataTable>
+                        
+                        
+                     
+                        <h:panelGroup/>
+                    
+                       <!--  <h:outputLabel value="main content"/>
+                        <c:forEach items="#{controller.model.songs}" var="item" varStatus="index">
+                            <h:outputLabel value="#{index}, #{item}"/>
+                        </c:forEach>
+                       -->
+                    </h:panelGrid>
+                    <script type="text/javascript" >
+                            alert("I am an alert box!");
+                    </script>
+                </h:form>
+                
+            </ui:define>
+        </ui:composition>
+            <!--<c:forEach items="#{controller.model.songs}" var="item" varStatus="index">
+                <h:outputLabel value="#{index}, #{item}"/>
+                
+            </c:forEach>
+            -->
     </h:body>
 </html>
 

@@ -7,8 +7,11 @@
 package controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import model.MyJamModel;
+import model.SongDescription;
 
 /**
  *
@@ -16,12 +19,24 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name="controller")
 @SessionScoped
-public class MyJamController {
+public class MyJamController implements Serializable{
+    private static long serialVersionUID = -3377875199072595764L;
+    private MyJamModel model;
+    public MyJamController(){
+        model = new MyJamModel();
+       
+    }
+    public void setModel(MyJamModel model){
+        this.model = model;
+    }
+    public MyJamModel getModel(){
+        model.addItems(new ArrayList<SongDescription>());
+        return model;
+    }
     
 }
+/*
 
-public class ShannonsTheoremController implements Serializable{
-    private static long serialVersionUID = -3377875199072595764L;
     private ShannonsTheoremModel model;
     
     public ShannonsTheoremController(){
@@ -36,4 +51,5 @@ public class ShannonsTheoremController implements Serializable{
         model.calculateMDR();
         return "index";
     }
-}
+*/
+
